@@ -26,3 +26,4 @@ In a go/no-go task the participant is required to react to a “go” stimulus a
 In the following you will find a visualization of how the experiment should look like, once you successfully completed the code:
 
 <img src="go-nogo.png" alt="drawing" width="450"/>
+#
