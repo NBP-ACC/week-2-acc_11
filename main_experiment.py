@@ -1,6 +1,7 @@
 import pygame
 import sys
 import csv
+import pandas as pd
 import random
 from parameter_list import *
 clock = pygame.time.Clock()
@@ -73,7 +74,9 @@ def writeData(datalist, subID):
     # create a csvfile for each subject and name it: Sub[subID].csv
     # add a header ('SubjectID','StimulusType','response','RT') to the csvfile
     # and write each entry of datalist to a single row
-    # TODO
+    df = pd.DataFrame(datalist)
+    df.to_csv('./Data/Sub{}.csv'.format(subID), header = ['SubjectID','StimulusType','response','RT'])
+
 
 
 ######                 main experiment loop            ##########
@@ -122,8 +125,8 @@ def experiment(subID):
                         if event.type == pygame.KEYDOWN:
                             if event.key == pygame.K_SPACE:
                                 # Time elapsed from stimulus to button press
-                                RT = # TODO
-                                response = # TODO
+                                RT = pygame.time.get_ticks() - start
+                                response = 1
 
                 fill_background()# clear the screen
                 pygame.display.flip()
@@ -136,7 +139,10 @@ def experiment(subID):
 
 if __name__ == "__main__":
     #Fill this before start of the experiment
-    subID = # TODO ID of the subject
+    i = 0
+    while os.path.exists('./Data/Sub{}.csv'.format(i)):
+        i += 1
+    subID = i
     dataFile = experiment(subID)
     print('*'*30)
     print('Writing in data file: Sub{}.csv'.format(subID))
