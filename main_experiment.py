@@ -75,7 +75,7 @@ def writeData(datalist, subID):
     # add a header ('SubjectID','StimulusType','response','RT') to the csvfile
     # and write each entry of datalist to a single row
     df = pd.DataFrame(datalist)
-    df.to_csv('./Data/Sub{}.csv'.format(subID), header = ['SubjectID','StimulusType','response','RT'])
+    df.to_csv('./Data/Sub{}.csv'.format(subID), header = ['SubjectID','StimulusType','response','RT'], index = False)
 
 
 
